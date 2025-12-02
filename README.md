@@ -144,7 +144,6 @@ Uncertain / Human (附帶警告提示)
 
 📝 開發歷程 (Development Journey)
 
-本專案由資深工程師 Archie 協助指導，經歷了從原型到成品的完整迭代。
 
 <details>
 <summary><b>點擊展開完整開發紀錄</b></summary>
@@ -178,6 +177,5 @@ UX Upgrade: 加入字數過少 (Low Perplexity) 的防呆提示。
 </details>
 
 <div align="center">
-<p>Created with ❤️ by JustDone & Archie</p>
 <img src="https://www.google.com/search?q=https://img.shields.io/badge/License-MIT-green.svg" alt="License">
 </div>
