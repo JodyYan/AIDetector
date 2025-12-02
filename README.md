@@ -1,211 +1,183 @@
-🤖 AI Content Detector (AI 內容檢測器)
+<!-- markdownlint-disable MD033 -->
 
-這是一個基於現代 Web 技術構建的 AI 內容檢測應用。它能夠分析使用者輸入的文字，並透過 HuggingFace 的 Transformer 模型判斷該內容是由 人類撰寫 還是由 AI (如 ChatGPT) 生成。
+<div align="center">
 
-本專案採用 前後端分離 架構，前端使用 React 還原了精美的現代化 UI，後端則運行 FastAPI 並整合 PyTorch 進行即時推論。
+🤖 AI Content Detector
+
+Next-Gen Text Analysis Powered by RoBERTa
+
+<!-- Badges 徽章區：讓專案看起來更專業 -->
+
+<br />
+
+<!-- 專案簡介 -->
+
+<p align="center">
+<b>拒絕隨機瞎猜，使用真實 Transformer 模型進行推論。</b>
+
+
+
+
+這是一個全端 AI 檢測應用，能夠分析文本規律，精準判斷內容是由人類撰寫還是 AI 生成。
+
+
+
+
+已針對 <b>Streamlit Cloud</b> 進行優化，並內建強制亮色主題 (Force Light Theme)。
+</p>
+
+<!-- 🔴 重要：建議將你的網頁截圖命名為 demo.png 放根目錄，並將下方連結換成 ./demo.png -->
+
+</div>
+
+⚡️ 主要功能 (Features)
+
+🕵️‍♂️ 真實 AI 核心： 整合 roberta-base-openai-detector 模型，非隨機數生成。
+
+🚀 一鍵部署： 支援 Streamlit 架構，輕鬆部署至雲端。
+
+🎨 現代化介面： 透過 CSS Injection 強制亮色卡片風格，解決深色模式下的閱讀問題。
+
+⚠️ 智慧提示： 自動偵測字數過少的輸入並給予準確度警告。
+
+🗑️ 智慧清空： 內建一鍵重置功能，優化測試體驗。
 
 🛠 技術堆疊 (Tech Stack)
 
-Frontend (前端)
+Component
 
-Framework: React (Vite)
+Technology
 
-Styling: Tailwind CSS (v3.4) - 用於快速構建響應式介面
+Description
 
-Icons: Lucide React - 現代化圖示庫
+Frontend UI
 
-HTTP Client: Axios - 處理 API 請求
+Streamlit
 
-Backend (後端)
+Python 驅動的快速 Web 框架 (Custom CSS Enhanced)
 
-Framework: FastAPI (Python) - 高效能的非同步 Web 框架
+Backend Logic
 
-Server: Uvicorn - ASGI 伺服器
+Python
 
-ML Core: PyTorch + Transformers (HuggingFace)
+處理核心邏輯與運算
 
-Model: roberta-base-openai-detector (RoBERTa) - 專門用於檢測生成式文本的模型
+Model Engine
 
-🚀 安裝與啟動 (Installation & Setup)
+PyTorch
 
-為了確保開發環境的乾淨與隔離，本專案嚴格使用虛擬環境。
+深度學習計算框架
 
-1. 後端啟動 (Backend)
+AI Model
 
-後端負責載入 AI 模型並處理檢測邏輯。
+Transformers
 
-# 1. 進入專案根目錄
+HuggingFace 預訓練模型載入器
 
-cd 5114056054_hw5
+Algorithm
 
-# 2. 建立與啟用虛擬環境 (Virtual Environment)
+RoBERTa
 
-# macOS/Linux
+Robustly Optimized BERT Approach
 
+🚀 快速啟動 (Quick Start)
+
+1. 本地執行 (Local Development)
+
+# 1. Clone 專案並進入目錄
+git clone <your-repo-url>
+cd <your-repo-folder>
+
+# 2. 建立虛擬環境 (強烈建議)
 python3 -m venv venv
 source venv/bin/activate
 
-# Windows
-
-# python -m venv venv
-
-# .\venv\Scripts\Activate
-
-# 3. 安裝依賴套件
-
+# 3. 安裝依賴 (包含 AI 核心庫)
 pip install -r requirements.txt
 
-# (若無 requirements.txt，請執行: pip install fastapi uvicorn pydantic python-multipart torch transformers scipy)
+# 4. 啟動應用
+streamlit run app.py
 
-# 4. 啟動伺服器
 
-# 首次啟動會下載約 500MB 的模型檔案，請耐心等待直到出現 "Application startup complete"
+2. 雲端部署 (Streamlit Cloud)
 
-uvicorn main:app --reload
+本專案已針對 Streamlit Community Cloud 進行優化。
+只需將本專案 (app.py 與 requirements.txt) 推送到 GitHub，並在 Streamlit Cloud 選擇 app.py 作為入口檔案即可。
 
-後端服務位置：<http://127.0.0.1:8000>
+Note: 首次啟動需下載約 500MB 模型檔案，請耐心等待 1-3 分鐘。
 
-2. 前端啟動 (Frontend)
+🧪 測試指南 (Testing Guide)
 
-前端負責提供使用者介面。
+為了獲得最準確的檢測結果，請參考下表進行測試：
 
-# 1. 開啟新的終端機視窗，進入 frontend 資料夾
+測試情境 (Scenario)
 
-cd frontend
+輸入範例 (Example)
 
-# 2. 安裝依賴
+預期結果 (Expected)
 
-npm install
+人類文章 🟢
 
-# 3. 啟動開發伺服器
+複製一段真實新聞或 Wiki (50字以上)
 
-npm run dev
+Likely Human (<20%)
 
-前端頁面位置：<http://localhost:5173>
+AI 生成 🔴
 
-🧪 正確測試指南 (Testing Guide)
+複製 ChatGPT 生成的長文
 
-⚠️ 重要：AI 模型的判斷準確度高度依賴於「輸入內容的長度」與「完整性」。
-為了避免誤判，請遵循以下測試原則：
+AI Detected (>50%)
 
-✅ 正確的測試方式 (Valid Scenarios)
+過短/亂碼 🟠
 
-測試人類文章：
+"Hello" 或 "asdfg"
 
-請複製一段真實的新聞報導、學術論文摘要或維基百科內容。
+Uncertain / Human (附帶警告提示)
 
-長度建議： 至少 50 個英文單字 以上。
+🔍 結果判讀
 
-預期結果： 🟢 Likely Human Written
+🔴 AI Content Detected: 模型發現了高度規律的語法結構。
 
-測試 AI 文章：
+🟠 Mixed / Uncertain: 文本特徵不明顯，可能是混合寫作或字數太少 (<50字)。
 
-請使用 ChatGPT / Claude 生成一段文字（例如：Write a paragraph about the history of coffee）。
+🟢 Likely Human Written: 文本充滿了人類特有的不規則性與創造性。
 
-將生成的內容完整複製貼上。
+📝 開發歷程 (Development Journey)
 
-預期結果： 🔴 AI Content Detected
+本專案由資深工程師 Archie 協助指導，經歷了從原型到成品的完整迭代。
 
-❌ 容易導致誤判的情境 (Common Pitfalls)
+<details>
+<summary><b>點擊展開完整開發紀錄</b></summary>
 
-字數過少 (Too Short)：
+Phase 1: Environment Setup 🏗️
 
-輸入："I am hungry" 或 "Hello world"。
+Goal: 建立隔離且乾淨的 Python venv 環境。
 
-原因： 模型缺乏足夠的語法特徵來判斷規律性，容易回傳不確定的中間值。
+Action: 解決了環境變數與路徑衝突問題，確保 python 指令正確指向虛擬環境。
 
-亂碼輸入 (Gibberish)：
+Phase 2: Mock Prototype 🧪
 
-輸入："asdfjkl;aljkdsf"。
+Goal: 快速驗證前後端分離架構 (React + FastAPI)。
 
-原因： AI 模型通常不會生成無意義的亂碼，因此這類輸入通常會被判定為「非 AI (Likely Human)」，但這並無實際意義。
+Action: 使用 random 模擬檢測數據，優先完成前端 UI 切版與互動邏輯。
 
-📊 數據結果解讀 (Result Interpretation)
+Phase 3: Real AI Integration 🧠
 
-系統會根據模型回傳的信心分數 (Probability Score)，將結果分類為三種狀態：
+Goal: 導入真實機器學習模型與 Streamlit 遷移。
 
-狀態 (Status)
-
-顏色
-
-分數區間
-
-含義解釋
-
-Likely Human Written
-
-🟢 綠色
-
-< 20%
-
-極高機率為人類撰寫，文本缺乏機器生成的規律特徵。
-
-Mixed / Uncertain
-
-🟠 橘色
-
-20% ~ 50%
-
-不確定區域。通常發生在文本過短，或文章經過人類大幅潤飾與 AI 混合撰寫時。
-
-AI Content Detected
-
-🔴 紅色
-
-> 50%
-
-偵測到明顯的 AI 生成特徵（如過度工整的語法結構或特定的用詞頻率）。
-
-📝 開發歷程與 Prompt 紀錄 (Development Process)
-
-本專案是在資深程式設計師 (Archie) 的引導下，透過以下階段逐步迭代完成。
-
-Phase 1: 環境建置與隔離 (Environment)
-
-核心理念： 不污染全域環境，使用 venv 隔離依賴。
-
-User Prompt: "因為你是一個資深工程師，所以在開發功能給程式前，請先給我一套指令來建立『虛擬環境 (venv)』並安裝 requirements.txt..."
-Action: 建立了 Python 虛擬環境，並解決了 macOS zsh: command not found: python 的路徑問題。
-
-Phase 2: 原型開發與 Mock 數據 (Prototyping)
-
-核心理念： 優先打通前後端架構，邏輯暫時使用模擬數據 (Mock) 以加速 UI 開發。
-
-User Prompt: "我想要做一個這樣的頁面然後加上符合該頁面的功能 (附圖)"
-Action:
-
-Backend: 使用 random.uniform() 建立模擬 API。
-
-Frontend: 使用 React + Tailwind 還原設計稿 UI。
-
-Issue Solved: 解決了 Tailwind CSS v4 版本衝突導致的紅字錯誤，降級至 v3 穩定版。
-
-Phase 3: 真實 AI 模型整合 (Real Implementation)
-
-核心理念： 將隨機的 Mock 邏輯替換為真實的機器學習模型。
-
-User Prompt: "畫面中的字是我打得，這樣的數據正常嗎？... 那不需要(Mock)，但請在畫面上給我一個清空內容的按鈕及功能。"
 Action:
 
 引入 transformers 與 torch。
 
-載入 roberta-base-openai-detector 模型。
+載入 roberta-base-openai-detector。
 
-Logic Upgrade: 從 random 升級為真實的 pipeline("text-classification")。
+UI Polish: 透過 CSS 強制還原 React 版本的白色卡片風格，解決 Streamlit 預設 Dark Mode 的視覺問題。
 
-Feature: 新增了「清空內容 (Trash Icon)」功能。
+UX Upgrade: 加入字數過少 (Low Perplexity) 的防呆提示。
 
-📂 專案結構 (File Structure)
+</details>
 
-.
-├── frontend/                # React 前端專案
-│   ├── src/
-│   │   ├── App.jsx          # 主應用程式邏輯 (UI + API整合)
-│   │   ├── index.css        # Tailwind 樣式入口
-│   │   └── main.jsx         # React 入口點
-│   ├── tailwind.config.js   # Tailwind v3 設定檔
-│   └── package.json         # 前端依賴清單
-├── venv/                    # Python 虛擬環境 (由 git 忽略)
-├── main.py                  # FastAPI 後端入口與 AI 檢測邏輯
-├── requirements.txt         # 後端依賴清單
-└── README.md                # 專案說明文件
+<div align="center">
+<p>Created with ❤️ by JustDone & Archie</p>
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+</div>

@@ -1,8 +1,9 @@
-fastapi
-uvicorn[standard]
-pydantic
-python-multipart
 streamlit
 transformers
 torch
 scipy
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
+
